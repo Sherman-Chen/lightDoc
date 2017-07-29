@@ -2,3 +2,7 @@
 composer.lock
 /vendor/*
 /dest/*
+
+.vscode/*
+.idea/*
+/document/*
