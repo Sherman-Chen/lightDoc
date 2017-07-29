@@ -1,0 +1,33 @@
+# 类{$reflection->getShortName()}
+
+# 目录
+
+{foreach $reflection->getMethods() as $method}
+{if $method->getDocComment()}
+    {var $docBlock = $factory->create($method)}
+{/if}
+
+* [`{$method->getName()}` {if $method->getDocComment()}{$docBlock->getSummary()}{/if}](#{$method->getName()})
+{/foreach}
+
+# 方法
+
+{foreach $reflection->getMethods() as $method}
+{if $method->getDocComment()}
+{var $docBlock = $factory->create($method)}
+## <span id = "{$method->getName()}"> {if $method->isAbstract()}abstract {elseif $method->isFinal()}final {/if}{if $method->isProtected()}protected{else}public{/if} {if $method->isStatic()}static{/if} {$method->getName()}</span>
+{$docBlock->getSummary()|noescape}
+
+{foreach $method->getParameters() as $parameter}
+* @param {$parameter->__toString ()|noescape} {foreach $docBlock->getTags() as $tag}{if $tag->getName()=='param' && $tag->getVariableName()==$parameter->getName()}{$tag->getDescription()}{/if}{/foreach}
+{/foreach}
+
+{var $return = $docBlock->getTagsByName('return')}
+* @return {if $return}{$return[0]->__toString()}{else}null{/if}
+
+
+{$docBlock->getDescription()|noescape}
+{else}
+### {$method->getName()}()
+{/if}
+{/foreach}

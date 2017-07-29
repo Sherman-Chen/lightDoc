@@ -1,0 +1,14 @@
+{
+    "name": "c7/lightdoc",
+    "type": "project",
+    "authors": [
+        {
+            "name": "cxm",
+            "email": "707039333@qq.com"
+        }
+    ],
+    "require": {
+        "phpdocumentor/reflection-docblock": "^3.2",
+        "latte/latte": "^2.4"
+    }
+}
