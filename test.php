@@ -3,7 +3,7 @@ require './vendor/autoload.php';
 
 
 // 引入需要反射的文件
-require 'E:/php/WWW/think5/thinkphp/library/think/model/Relation.php';
+require 'E:/php/WWW/test/tp/thinkphp/library/think/cache/driver/File.php';
 
 // 创建目标渲染引擎
 $latte = new Latte\Engine;
@@ -11,7 +11,7 @@ $latte->setTempDirectory('./tmp');
 
 
 // 创建反射
-$reflection = new ReflectionClass('think\model\Relation');
+$reflection = new ReflectionClass('think\cache\driver\File');
 $methods = $reflection->getMethods();
 
 // 创建docBlock解析器
